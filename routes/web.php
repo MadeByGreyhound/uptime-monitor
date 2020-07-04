@@ -13,5 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'SiteController@index');
-Route::get('/add', 'SiteController@create')->name('addSite');
+Route::get('/', 'SiteController@index')->name('viewSites');
+Route::post('/', 'SiteController@store')->name('storeSite');
+Route::get('/add', 'SiteController@create')->name('createSite');

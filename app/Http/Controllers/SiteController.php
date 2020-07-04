@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Routing\Redirector;
 use Illuminate\View\View;
 use Spatie\UptimeMonitor\Models\Monitor;
 
@@ -40,16 +41,28 @@ class SiteController extends Controller
      * @return View
      */
     public function create()
-    {}
+    {
+    	return view('edit');
+	}
 
     /**
      * Store a newly created site monitor in database.
      *
      * @param Request $request
-     * @return Response
+     * @return Redirector
      */
     public function store(Request $request)
-    {}
+    {
+    	request()->validate([
+    		'url' => 'required|unique:monitors|max:1000',
+		]);
+
+    	$monitor = new Monitor();
+    	$monitor->url = request('url');
+    	$monitor->save();
+
+		return redirect(route('viewSites'));
+	}
 
     /**
      * Show the form for editing the specified site monitor.
