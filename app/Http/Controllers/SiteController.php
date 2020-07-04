@@ -104,12 +104,17 @@ class SiteController extends Controller
 		return redirect(route('viewSites'));
 	}
 
-    /**
-     * Remove the specified site monitor from storage.
-     *
-     * @param Monitor $site
-     * @return Response
-     */
+	/**
+	 * Remove the specified site monitor from storage.
+	 *
+	 * @param Monitor $site
+	 * @return Redirector
+	 * @throws \Exception
+	 */
     public function destroy(Monitor $site)
-    {}
+    {
+    	$site->delete();
+
+		return redirect(route('viewSites'));
+	}
 }

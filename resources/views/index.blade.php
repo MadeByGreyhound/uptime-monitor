@@ -32,7 +32,13 @@
 					<div class="site-actions">
 						<a href="#" class="button disable">Disable</a>
 						<a href="{{ route('editSite', $site->id) }}" class="button edit">Edit</a>
-						<a href="#" class="button delete">Delete</a>
+
+						<form method="POST" action="{{ route('destroySite', $site->id) }}">
+							@csrf
+							@method('DELETE')
+
+							<button type="submit" class="button delete">Delete</button>
+						</form>
 					</div>
 				</article>
 			@endforeach
