@@ -13,6 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Show sites
 Route::get('/', 'SiteController@index')->name('viewSites');
+
+// Add site
+Route::get('/site/add', 'SiteController@create')->name('createSite');
 Route::post('/', 'SiteController@store')->name('storeSite');
-Route::get('/add', 'SiteController@create')->name('createSite');
+
+// Edit site
+Route::get('/site/{site}/edit', 'SiteController@edit')->name('editSite');
+Route::post('/site/{site}', 'SiteController@update')->name('updateSite');

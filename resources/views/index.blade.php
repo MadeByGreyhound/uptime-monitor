@@ -31,7 +31,7 @@
 
 					<div class="site-actions">
 						<a href="#" class="button disable">Disable</a>
-						<a href="#" class="button edit">Edit</a>
+						<a href="{{ route('editSite', $site->id) }}" class="button edit">Edit</a>
 						<a href="#" class="button delete">Delete</a>
 					</div>
 				</article>

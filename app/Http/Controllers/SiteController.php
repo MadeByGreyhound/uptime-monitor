@@ -29,10 +29,9 @@ class SiteController extends Controller
      */
     public function index()
     {
-    	$sites = Monitor::all();
-
-    	// return response($monitors);
-        return view('index', compact('sites'));
+        return view('index', [
+        	'sites' => Monitor::all(),
+		]);
     }
 
     /**
@@ -42,46 +41,68 @@ class SiteController extends Controller
      */
     public function create()
     {
-    	return view('edit');
+    	return view('edit', [
+    		'site' => new Monitor(),
+		]);
 	}
 
-    /**
-     * Store a newly created site monitor in database.
-     *
-     * @param Request $request
-     * @return Redirector
-     */
+	/**
+	 * Store a newly created site monitor in database.
+	 *
+	 * @param Request $request
+	 * @param Monitor $monitor
+	 * @return Redirector
+	 */
     public function store(Request $request)
     {
-    	request()->validate([
-    		'url' => 'required|unique:monitors|max:1000',
-		]);
-
-    	$monitor = new Monitor();
-    	$monitor->url = request('url');
-    	$monitor->save();
-
-		return redirect(route('viewSites'));
+		return $this->storeOrUpdate($request);
 	}
 
     /**
      * Show the form for editing the specified site monitor.
      *
      * @param Monitor $site
-     * @return Response
+     * @return View
      */
     public function edit(Monitor $site)
-    {}
+    {
+    	return view('edit', compact('site'));
+	}
 
     /**
      * Update the specified site monitor in storage.
      *
      * @param Request $request
      * @param Monitor $site
-     * @return Response
+     * @return Redirector
      */
     public function update(Request $request, Monitor $site)
-    {}
+    {
+    	return $this->storeOrUpdate($request, $site);
+	}
+
+	/**
+	 * Create or update the specified site in storage.
+	 *
+	 * @param Request $request
+	 * @param Monitor|null $site Specified site, null if creating a new site.
+	 * @return Redirector Redirect back to home page.
+	 */
+    public function storeOrUpdate(Request $request, Monitor $site = null)
+	{
+		$request->validate([
+			'url' => 'required|unique:monitors|max:1000|url',
+		]);
+
+		if( !$site ) {
+			$site = new Monitor();
+		}
+
+		$site->url = request('url');
+		$site->save();
+
+		return redirect(route('viewSites'));
+	}
 
     /**
      * Remove the specified site monitor from storage.
