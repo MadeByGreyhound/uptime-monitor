@@ -28,10 +28,10 @@ class SiteController extends Controller
      */
     public function index()
     {
-    	$monitors = Monitor::all();
+    	$sites = Monitor::all();
 
     	// return response($monitors);
-        return view('index', compact('monitors'));
+        return view('index', compact('sites'));
     }
 
     /**
