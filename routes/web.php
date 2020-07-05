@@ -26,3 +26,6 @@ Route::post('/site/{site}', 'SiteController@update')->name('updateSite');
 
 // Delete site
 Route::delete('/site/{site}/delete', 'SiteController@destroy')->name('destroySite');
+
+// Disable site
+Route::post('/site/{site}/toggle', 'SiteController@toggle')->name('toggleSite');

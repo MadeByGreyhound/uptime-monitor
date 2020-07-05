@@ -50,7 +50,6 @@ class SiteController extends Controller
 	 * Store a newly created site monitor in database.
 	 *
 	 * @param Request $request
-	 * @param Monitor $monitor
 	 * @return Redirector
 	 */
     public function store(Request $request)
@@ -114,6 +113,20 @@ class SiteController extends Controller
     public function destroy(Monitor $site)
     {
     	$site->delete();
+
+		return redirect(route('viewSites'));
+	}
+
+	/**
+	 * Toggle whether the site monitor is updated or disabled.
+	 *
+	 * @param Monitor $site
+	 * @return Redirector
+	 */
+	public function toggle(Monitor $site)
+	{
+		$site->uptime_check_enabled = !$site->uptime_check_enabled;
+		$site->save();
 
 		return redirect(route('viewSites'));
 	}

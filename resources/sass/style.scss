@@ -105,51 +105,40 @@ a {
 
 	.site-status {
 		grid-area: status;
-		width: 25px;
-		height: 25px;
-		border-radius: 50%;
-		flex-shrink: 0;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		border-width: 1px;
-		border-style: solid;
 
-		span {
+		.status {
+			width: 25px;
+			height: 25px;
+			border-radius: 50%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			border-width: 1px;
+			border-style: solid;
 			font-size: 0;
-		}
-
-		svg {
-			height: auto;
-		}
-
-		&.up {
-			background-color: #DFFBE5;
-			border-color: #8CD999;
 
 			svg {
-				width: 15px;
-				fill: #8CD999;
+				height: auto;
 			}
-		}
 
-		&.down {
-			background-color: #FBDFDF;
-			border-color: #D54C4C;
+			&.up {
+				background-color: #DFFBE5;
+				border-color: #8CD999;
 
-			svg {
-				width: 13px;
-				fill: #D54C4C;
+				svg {
+					width: 15px;
+					fill: #8CD999;
+				}
 			}
-		}
 
-		&.not-yet-checked {
-			background-color: #E6E6E6;
-			border-color: #42454B;
+			&.down {
+				background-color: #FBDFDF;
+				border-color: #D54C4C;
 
-			svg {
-				width: 15px;
-				fill: #42454B;
+				svg {
+					width: 13px;
+					fill: #D54C4C;
+				}
 			}
 		}
 	}
@@ -161,15 +150,15 @@ a {
 	.site-actions {
 		grid-area: actions;
 
+		& > *:not(:last-child) {
+			margin-right: 5px;
+		}
+
 		form {
 			display: inline;
 		}
 
 		.button {
-			&:not(:last-child) {
-				margin-right: 5px;
-			}
-
 			&.edit {
 				background: #1F8BEB;
 				color: white;
