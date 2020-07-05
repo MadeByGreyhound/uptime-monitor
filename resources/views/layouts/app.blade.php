@@ -15,6 +15,8 @@
 			</header>
 
 			<main class="content">
+				<x-notification/>
+
 				@yield('content')
 			</main>
 		</div>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Redirector;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\View\View;
 use Spatie\UptimeMonitor\Models\Monitor;
 
@@ -89,16 +90,26 @@ class SiteController extends Controller
 	 */
     public function storeOrUpdate(Request $request, Monitor $site = null)
 	{
-		$request->validate([
+		$validator = Validator::make($request->all(), [
 			'url' => 'required|unique:monitors|max:1000|url',
 		]);
 
-		if( !$site ) {
+		if ($validator->fails()) {
+			$request->session()->flash('error', "Errors occurred while saving the site.");
+
+			return redirect(url()->previous())
+				->withErrors($validator)
+				->withInput();
+		}
+
+		if (!$site) {
 			$site = new Monitor();
 		}
 
 		$site->url = request('url');
 		$site->save();
+
+		$request->session()->flash('success', "Site \"{$site->url}\" saved successfully.");
 
 		return redirect(route('viewSites'));
 	}
@@ -113,6 +124,8 @@ class SiteController extends Controller
     public function destroy(Monitor $site)
     {
     	$site->delete();
+
+		request()->session()->flash('success', "Site \"{$site->url}\" deleted successfully.");
 
 		return redirect(route('viewSites'));
 	}
