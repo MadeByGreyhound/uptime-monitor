@@ -1,0 +1,96 @@
+.site-list {
+	margin-bottom: 40px;
+}
+
+.site {
+	display: grid;
+	grid-template-columns: 25px 1fr;
+	grid-template-areas: "status url"
+						 "actions actions";
+	gap: 10px 15px;
+	align-items: center;
+	margin-bottom: 40px;
+
+	@include bp(md) {
+		gap: 20px;
+		margin-bottom: 15px;
+		grid-template-columns: 25px 1fr auto;
+		grid-template-areas: "status url actions";
+	}
+
+	.site-status {
+		grid-area: status;
+
+		.status {
+			width: 25px;
+			height: 25px;
+			border-radius: 50%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			border-width: 1px;
+			border-style: solid;
+			font-size: 0;
+
+			svg {
+				height: auto;
+			}
+
+			&.up {
+				background-color: $green;
+				border-color: $greenDark;
+
+				svg {
+					width: 15px;
+					fill: $greenDark;
+				}
+			}
+
+			&.down {
+				background-color: $pink;
+				border-color: $pinkDark;
+
+				svg {
+					width: 13px;
+					fill: $pinkDark;
+				}
+			}
+		}
+	}
+
+	.site-url {
+		grid-area: url;
+	}
+
+	.site-actions {
+		grid-area: actions;
+
+		& > *:not(:last-child) {
+			margin-right: 5px;
+		}
+
+		form {
+			display: inline;
+		}
+
+		.button {
+			&.edit {
+				background: $blue;
+				color: white;
+
+				&:hover {
+					background: $blueDark;
+				}
+			}
+
+			&.delete {
+				background: $red;
+				color: white;
+
+				&:hover {
+					background: $redDark;
+				}
+			}
+		}
+	}
+}

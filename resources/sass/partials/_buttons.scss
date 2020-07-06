@@ -1,0 +1,16 @@
+.button,
+button,
+input[type="button"] {
+	background: $grey;
+	border: 1px solid rgba(0,0,0,0.25);
+	border-radius: 4px;
+	text-decoration: none;
+	padding: 7px 15px;
+	transition: background 0.2s ease-in-out;
+	display: inline-block;
+	cursor: pointer;
+
+	&:hover {
+		background: $greyDark;
+	}
+}

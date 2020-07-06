@@ -27,6 +27,6 @@
   },
   "dependencies": {
     "normalize.css": "^8.0.1",
-    "toms-simple-grid": "^1.0.0"
+    "toms-sass-helpers": "^1.1.0"
   }
 }

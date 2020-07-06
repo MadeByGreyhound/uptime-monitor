@@ -1,0 +1,39 @@
+* {
+	box-sizing: border-box;
+}
+
+html {
+	font-size: 62.5%;
+
+	@supports (font: -apple-system-body) {
+		font: -apple-system-body;
+		text-size-adjust: calc(12 / 17 * 100%);
+	}
+}
+
+body {
+	font-size: 1.6rem;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+	background-color: #F8FAFC;
+	color: $text;
+}
+
+h1 {
+	font-size: 2.4rem;
+	font-weight: 400;
+}
+
+h2 {
+	font-size: 2.2rem;
+	font-weight: 600;
+}
+
+a {
+	color: inherit;
+}
+
+.container {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0 20px;
+}
