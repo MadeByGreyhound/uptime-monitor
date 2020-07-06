@@ -8,6 +8,7 @@ use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\View\View;
 use Spatie\UptimeMonitor\Models\Monitor;
+use Spatie\UptimeMonitor\MonitorRepository;
 
 /**
  * Controller for handling all of the site functions.
@@ -140,6 +141,19 @@ class SiteController extends Controller
 	{
 		$site->uptime_check_enabled = !$site->uptime_check_enabled;
 		$site->save();
+
+		return redirect(route('viewSites'));
+	}
+
+	/**
+	 * Refresh the status of all sites.
+	 * 
+	 * @return Redirector
+	 */
+	public function refresh() {
+		MonitorRepository::getEnabled()->checkUptime();
+
+		request()->session()->flash('success', "Status of all sites refreshed successfully.");
 
 		return redirect(route('viewSites'));
 	}

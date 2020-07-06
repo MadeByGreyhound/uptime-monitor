@@ -47,8 +47,4 @@
 			@endforeach
 		</div>
 	@endif
-
-	<div class="actions">
-		<a href="{{ route('createSite') }}" class="button">Add Site</a>
-	</div>
 @endsection

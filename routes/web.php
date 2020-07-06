@@ -29,3 +29,6 @@ Route::delete('/site/{site}/delete', 'SiteController@destroy')->name('destroySit
 
 // Disable site
 Route::post('/site/{site}/toggle', 'SiteController@toggle')->name('toggleSite');
+
+// Force uptime check
+Route::post('/check', 'SiteController@refresh')->name('refresh');
