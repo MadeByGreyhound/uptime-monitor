@@ -70,7 +70,7 @@ class SiteController extends Controller
     public function edit(Monitor $site)
     {
     	return view('edit', [
-    		'has_sites' => true ? false : Monitor::exists(),
+    		'has_sites' => Monitor::exists(),
     		'site' => $site,
 		]);
 	}

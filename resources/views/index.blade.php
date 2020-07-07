@@ -3,7 +3,7 @@
 @section('content')
 	<h1>All Sites</h1>
 
-	@if($sites)
+	@if($sites->isNotEmpty())
 		<div class="site-list">
 			@foreach($sites as $site)
 				<article class="site">
