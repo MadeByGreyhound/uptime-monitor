@@ -25,4 +25,4 @@ Add the following line to cron file:
 * * * * * cd /path-to-your-project && php artisan schedule:run >> /dev/null 2>&1
 ```
 
-You can then use `php artisan tinker` to add a `new User`, setting their `name`, `email`, and `password` (using the `bcrypt` function), which is necessary to access the site.
+Finally, you can use `php artisan tinker` to add a `new User`, setting their `name`, `email`, and `password` (using the `bcrypt` function), which is necessary to access the site.
