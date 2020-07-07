@@ -1,21 +1,11 @@
 {
-	"input": {
-		"styles": ["resources/sass/style.scss", "resources/sass/admin.scss"],
-		"images": "resources/images/**/*.{jpg,jpeg,png,svg,gif}",
-		"copy": null,
-		"scripts": ["resources/js/app.js", "resources/js/admin.js"],
-		"icons": "resources/icons/**/*.svg"
+	"styles": {
+		"input": ["resources/sass/style.scss", "resources/sass/admin.scss"],
+		"output": "public/assets/css",
+		"watch": "resources/sass/**/*.scss"
 	},
-	"output": {
-		"styles": "public/assets/css",
-		"images": "public/assets/images",
-		"scripts": "public/assets/js",
-		"icons": "public/assets/icons"
-	},
-	"watch": {
-		"styles": "resources/sass/**/*.scss",
-		"images": "resources/images/**/*.{jpg,jpeg,png,svg,gif}",
-		"scripts": "resources/js/**/*.js",
-		"icons": "resources/icons/**/*.svg"
-	}
+	"images": false,
+	"copy": false,
+	"scripts": false,
+	"icons": false
 }
