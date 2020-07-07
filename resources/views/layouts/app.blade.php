@@ -17,11 +17,13 @@
 					<a href="{{ route('viewSites') }}" class="button">All sites</a>
 					<a href="{{ route('createSite') }}" class="button">Add site</a>
 
-					<form method="POST" action="{{ route('refresh') }}">
-						@csrf
+					@if($has_sites)
+						<form method="POST" action="{{ route('refresh') }}">
+							@csrf
 
-						<button type="submit" class="button">Check all sites</button>
-					</form>
+							<button type="submit" class="button">Check all sites</button>
+						</form>
+					@endif
 				</nav>
 			</header>
 

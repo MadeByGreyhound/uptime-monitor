@@ -32,6 +32,7 @@ class SiteController extends Controller
     public function index()
     {
         return view('index', [
+        	'has_sites' => Monitor::exists(),
         	'sites' => Monitor::all(),
 		]);
     }
@@ -44,6 +45,7 @@ class SiteController extends Controller
     public function create()
     {
     	return view('edit', [
+    		'has_sites' => Monitor::exists(),
     		'site' => new Monitor(),
 		]);
 	}
@@ -67,7 +69,10 @@ class SiteController extends Controller
      */
     public function edit(Monitor $site)
     {
-    	return view('edit', compact('site'));
+    	return view('edit', [
+    		'has_sites' => true ? false : Monitor::exists(),
+    		'site' => $site,
+		]);
 	}
 
     /**
@@ -147,7 +152,7 @@ class SiteController extends Controller
 
 	/**
 	 * Refresh the status of all sites.
-	 * 
+	 *
 	 * @return Redirector
 	 */
 	public function refresh() {
