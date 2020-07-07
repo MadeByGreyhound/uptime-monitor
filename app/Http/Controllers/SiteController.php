@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\View\View;
@@ -34,6 +33,7 @@ class SiteController extends Controller
         return view('index', [
         	'has_sites' => Monitor::exists(),
         	'sites' => Monitor::all(),
+			'title' => 'All Sites',
 		]);
     }
 
@@ -47,6 +47,7 @@ class SiteController extends Controller
     	return view('edit', [
     		'has_sites' => Monitor::exists(),
     		'site' => new Monitor(),
+			'title' => 'Add Site',
 		]);
 	}
 
@@ -72,6 +73,7 @@ class SiteController extends Controller
     	return view('edit', [
     		'has_sites' => Monitor::exists(),
     		'site' => $site,
+			'title' => "Edit {$site->url}",
 		]);
 	}
 

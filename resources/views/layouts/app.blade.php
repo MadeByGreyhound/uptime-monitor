@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Uptime Monitor</title>
+		<title>{{ "{$title} - " }}Uptime Monitor</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
 	</head>
