@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/tomslominski/uptime-monitor#readme",
   "devDependencies": {
-    "toms-gulp-config": "^1.1.0"
+    "toms-gulp-config": "^1.3.0"
   },
   "dependencies": {
     "normalize.css": "^8.0.1",
