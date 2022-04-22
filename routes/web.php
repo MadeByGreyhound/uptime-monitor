@@ -13,6 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Login
+Route::get('/login', 'AuthController@displayLogin')->name('login');
+Route::post('/login', 'AuthController@doLogin');
+
+// Logout
+Route::get('/logout', 'AuthController@doLogout')->name('logout');
+
 // Show sites
 Route::get('/', 'SiteController@index')->name('viewSites');
 

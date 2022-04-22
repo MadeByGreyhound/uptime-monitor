@@ -72,25 +72,5 @@
 		form {
 			display: inline;
 		}
-
-		.button {
-			&.edit {
-				background: $blue;
-				color: white;
-
-				&:hover {
-					background: $blueDark;
-				}
-			}
-
-			&.delete {
-				background: $red;
-				color: white;
-
-				&:hover {
-					background: $redDark;
-				}
-			}
-		}
 	}
 }

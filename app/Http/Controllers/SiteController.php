@@ -20,7 +20,7 @@ class SiteController extends Controller
 	 * Register auth middleware.
 	 */
 	public function __construct() {
-		$this->middleware('auth.basic');
+		$this->middleware('auth');
 	}
 
     /**

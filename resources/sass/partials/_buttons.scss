@@ -13,4 +13,22 @@ input[type="button"] {
 	&:hover {
 		background: $greyDark;
 	}
+
+	&.edit {
+		background: $blue;
+		color: white;
+
+		&:hover {
+			background: $blueDark;
+		}
+	}
+
+	&.delete {
+		background: $red;
+		color: white;
+
+		&:hover {
+			background: $redDark;
+		}
+	}
 }
