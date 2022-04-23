@@ -1,5 +1,7 @@
 <?php
 
+use NotificationChannels\Pushover\PushoverChannel;
+
 return [
 
     /*
@@ -9,13 +11,8 @@ return [
     'notifications' => [
 
         'notifications' => [
-            \Spatie\UptimeMonitor\Notifications\Notifications\UptimeCheckFailed::class => ['mail'],
-            \Spatie\UptimeMonitor\Notifications\Notifications\UptimeCheckRecovered::class => ['mail'],
-            \Spatie\UptimeMonitor\Notifications\Notifications\UptimeCheckSucceeded::class => [],
-
-            \Spatie\UptimeMonitor\Notifications\Notifications\CertificateCheckFailed::class => [],
-            \Spatie\UptimeMonitor\Notifications\Notifications\CertificateExpiresSoon::class => [],
-            \Spatie\UptimeMonitor\Notifications\Notifications\CertificateCheckSucceeded::class => [],
+            \App\Notifications\Notifications\UptimeCheckFailed::class => [PushoverChannel::class, 'mail'],
+            \App\Notifications\Notifications\UptimeCheckRecovered::class => [PushoverChannel::class, 'mail'],
         ],
 
         /*
@@ -42,7 +39,7 @@ return [
          * Here you can specify the notifiable to which the notifications should be sent. The default
          * notifiable will use the variables specified in this config file.
          */
-        'notifiable' => \Spatie\UptimeMonitor\Notifications\Notifiable::class,
+        'notifiable' => \App\Notifications\Notifiable::class,
 
         /*
          * The date format used in notifications.
@@ -102,7 +99,7 @@ return [
          * Fire `Spatie\UptimeMonitor\Events\MonitorFailed` event only after
          * the given number of uptime checks have consecutively failed for a monitor.
          */
-        'fire_monitor_failed_event_after_consecutive_failures' => 2,
+        'fire_monitor_failed_event_after_consecutive_failures' => 1,
 
         /*
          * When reaching out to sites this user agent will be used.
