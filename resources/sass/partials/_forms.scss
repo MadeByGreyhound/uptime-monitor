@@ -1,8 +1,13 @@
 .field {
-	margin-bottom: 40px;
+	margin-bottom: 10px;
 
 	&:last-child {
 		margin-bottom: 0;
+	}
+
+	&.split {
+		display: flex;
+		justify-content: space-between;
 	}
 
 	.error {

@@ -7,70 +7,80 @@
 	grid-template-columns: 25px 1fr;
 	grid-template-areas: "status url"
 						 "actions actions";
-	gap: 10px 15px;
+	gap: 10px;
 	align-items: center;
-	margin-bottom: 40px;
+	border-bottom: 1px solid #ededef;
+	padding: 8px 10px;
 
 	@include bp(md) {
-		gap: 20px;
-		margin-bottom: 15px;
 		grid-template-columns: 25px 1fr auto;
 		grid-template-areas: "status url actions";
+	}
+
+	&:first-child {
+		border-top: 1px solid #ededef;
 	}
 
 	.site-status {
 		grid-area: status;
 
-		.status {
-			width: 25px;
-			height: 25px;
-			border-radius: 50%;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			border-width: 1px;
-			border-style: solid;
-			font-size: 0;
+		svg {
+			display: block;
+			width: 100%;
+			height: auto;
+		}
 
-			svg {
-				height: auto;
-			}
+		&.up {
+			color: $success;
+		}
 
-			&.up {
-				background-color: $green;
-				border-color: $greenDark;
+		&.down {
+			color: $danger;
+		}
 
-				svg {
-					width: 15px;
-					fill: $greenDark;
-				}
-			}
-
-			&.down {
-				background-color: $pink;
-				border-color: $pinkDark;
-
-				svg {
-					width: 13px;
-					fill: $pinkDark;
-				}
-			}
+		&.not-yet-checked {
+			color: $primary;
 		}
 	}
 
 	.site-url {
 		grid-area: url;
+		margin-top: -1px;
+
+		a {
+			display: inline-block;
+			text-decoration: none;
+		}
+
+		.full {
+			display: none;
+		}
 	}
 
 	.site-actions {
 		grid-area: actions;
-
-		& > *:not(:last-child) {
-			margin-right: 5px;
-		}
+		display: flex;
+		justify-content: flex-end;
+		gap: 5px;
 
 		form {
 			display: inline;
+		}
+	}
+
+	&:nth-child(odd) {
+		background: #f9fafb;
+	}
+
+	@include bp(md) {
+		.site-url {
+			.short {
+				display: none;
+			}
+
+			.full {
+				display: block;
+			}
 		}
 	}
 }

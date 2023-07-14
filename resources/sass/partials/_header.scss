@@ -1,41 +1,11 @@
 .site-header {
-	margin: 20px 0 40px 0;
+	margin: 10px 0 20px 0;
 
-	@include bp(md) {
-		display: grid;
-		grid-template-columns: auto auto;
+	.container {
+		display: flex;
+		flex-wrap: wrap;
 		justify-content: space-between;
 		align-items: center;
-	}
-}
-
-.header-title {
-	font-size: 3.6rem;
-	font-weight: 800;
-	margin: 0 0 20px 0;
-
-	a {
-		text-decoration: none;
-	}
-
-	@include bp(md) {
-		margin: 0;
-	}
-}
-
-.header-nav {
-	display: flex;
-	flex-wrap: wrap;
-
-	form {
-		display: inline;
-	}
-
-	& > *:not(:last-child) {
-		margin: 0 5px 5px 0;
-
-		@include bp(md) {
-			margin-bottom: 0;
-		}
+		gap: 10px;
 	}
 }

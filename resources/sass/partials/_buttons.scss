@@ -1,34 +1,45 @@
 .button,
 button,
 input[type="button"] {
-	background: $grey;
-	border: 1px solid rgba(0,0,0,0.25);
-	border-radius: 4px;
+	background: white;
+	border: none;
+	border-radius: 8px;
 	text-decoration: none;
-	padding: 7px 15px;
+	padding: 9px 10px;
 	transition: background 0.2s ease-in-out;
 	display: inline-block;
 	cursor: pointer;
+	color: black;
+	box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1);
+	font-weight: 450;
+	line-height: 1;
 
 	&:hover {
-		background: $greyDark;
+		background: #f2f1f3;
 	}
 
-	&.edit {
-		background: $blue;
+	svg {
+		width: 1em;
+		height: 1em;
+		margin-right: 4px;
+		vertical-align: -2px;
+	}
+
+	&.primary {
+		background: $primary;
 		color: white;
 
 		&:hover {
-			background: $blueDark;
+			background: darken($primary, 10);
 		}
 	}
 
-	&.delete {
-		background: $red;
+	&.danger {
+		background: $danger;
 		color: white;
 
 		&:hover {
-			background: $redDark;
+			background: darken($danger, 10);
 		}
 	}
 }

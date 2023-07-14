@@ -10,7 +10,7 @@ use Spatie\UptimeMonitor\Models\Monitor;
 use Spatie\UptimeMonitor\MonitorRepository;
 
 /**
- * Controller for handling all of the site functions.
+ * Controller for handling all the site functions.
  *
  * @package App\Http\Controllers
  */
@@ -71,7 +71,7 @@ class SiteController extends Controller
     	return view('edit', [
     		'has_sites' => Monitor::exists(),
     		'site' => $site,
-			'title' => "Edit {$site->url}",
+			'title' => "Edit Site",
 		]);
 	}
 
