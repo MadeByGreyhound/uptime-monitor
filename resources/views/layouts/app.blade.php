@@ -18,8 +18,6 @@
 						<button type="submit" class="button">Check all sites</button>
 					</form>
 				@endif
-
-				<a href="{{ route('logout') }}" class="button delete">Logout</a>
 			</nav>
 		</header>
 

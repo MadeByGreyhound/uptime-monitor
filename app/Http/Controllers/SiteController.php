@@ -19,9 +19,7 @@ class SiteController extends Controller
 	/**
 	 * Register auth middleware.
 	 */
-	public function __construct() {
-		$this->middleware('auth');
-	}
+	public function __construct() {}
 
     /**
      * Display a listing of uptime monitors.
