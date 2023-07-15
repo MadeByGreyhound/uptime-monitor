@@ -1,8 +1,8 @@
 # Uptime Monitor
 
-Wrapper site for Spatie's Laravel Uptime Monitor.
+Frontend for Spatie's Laravel Uptime Monitor.
 
-![screenshot](https://i.imgur.com/cI46lfQ.png)
+![Screenshot](https://github.com/MadeByGreyhound/uptime-monitor/assets/739599/d653733e-c971-4329-b074-ba78c5d78d5d)
 
 ## Deployment
 
@@ -12,7 +12,8 @@ Once that is done, issue the following commands in the project directory:
 
 ```
 composer install --optimize-autoloader --no-dev
-npm install --only=production
+npm install
+npm run prod
 php artisan migrate
 php artisan config:cache
 php artisan route:cache
@@ -24,5 +25,3 @@ Add the following line to cron file:
 ```
 * * * * * cd /path-to-your-project && php artisan schedule:run >> /dev/null 2>&1
 ```
-
-Finally, you can use `php artisan tinker` to add a `new User`, setting their `name`, `email`, and `password` (using the `bcrypt` function), which is necessary to access the site.
