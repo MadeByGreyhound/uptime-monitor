@@ -1,32 +1,29 @@
 {
-  "name": "uptime-monitor",
-  "version": "1.0.0",
-  "description": "Wrapper for Spatie's Laravel Uptime Monitor.",
-  "main": "webpack.mix.js",
-  "directories": {
-    "test": "tests"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "watch": "gulp --gulpfile=node_modules/toms-gulp-config/gulpfile.esm.js",
-    "dev": "gulp build --gulpfile=node_modules/toms-gulp-config/gulpfile.esm.js",
-    "prod": "gulp build --prod --gulpfile=node_modules/toms-gulp-config/gulpfile.esm.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/tomslominski/uptime-monitor.git"
-  },
-  "author": "Tom Slominski <tom@slomin.ski>",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/tomslominski/uptime-monitor/issues"
-  },
-  "homepage": "https://github.com/tomslominski/uptime-monitor#readme",
-  "devDependencies": {
-    "toms-gulp-config": "^1.3.0"
-  },
-  "dependencies": {
-    "normalize.css": "^8.0.1",
-    "toms-sass-helpers": "^1.1.0"
-  }
+	"name": "uptime-monitor",
+	"description": "Wrapper for Spatie's Laravel Uptime Monitor.",
+	"scripts": {
+		"watch": "npx mix watch",
+		"dev": "npx mix",
+		"prod": "npx mix --production",
+		"build": "npx mix --production"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/MadeByGreyhound/uptime-monitor.git"
+	},
+	"author": "Greyhound Studio <hello@greyhound.studio>",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/MadeByGreyhound/uptime-monitor/issues"
+	},
+	"homepage": "https://github.com/MadeByGreyhound/uptime-monitor#readme",
+	"devDependencies": {
+		"laravel-mix": "^6.0.49",
+		"sass": "^1.62.1",
+		"sass-loader": "^13.2.2"
+	},
+	"dependencies": {
+		"@greyhoundstudio/bp": "^1.0.0",
+		"modern-normalize": "^2.0.0"
+	}
 }
