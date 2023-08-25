@@ -7,7 +7,7 @@
 
 .site {
 	display: grid;
-	grid-template-columns: 25px 1fr;
+	grid-template-columns: 25px minmax(0, 1fr);
 	grid-template-areas: "status url"
 						 "actions actions";
 	gap: 10px;
@@ -51,7 +51,8 @@
 		margin-top: -1px;
 
 		a {
-			display: inline-block;
+			display: block;
+			overflow-wrap: break-word;
 			text-decoration: none;
 		}
 

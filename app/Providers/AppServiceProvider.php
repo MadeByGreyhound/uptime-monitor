@@ -29,10 +29,14 @@ class AppServiceProvider extends ServiceProvider
 			$parts = parse_url( $this->url );
 
 			if( $parts ) {
-				return $parts['host'];
+				return str_replace('.', '.<wbr>', $parts['host']);
 			}
 
 			return null;
+		} );
+
+		MacroableModels::addMacro( Monitor::class, 'getFullUrl', function() {
+			return str_replace('.', '.<wbr>', $this->url);
 		} );
 
 		MacroableModels::addMacro( Monitor::class, 'getUptimeStatusId', function() {

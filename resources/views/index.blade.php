@@ -11,8 +11,8 @@
 
 					<div class="site-url">
 						<a href="{{ $site->url }}">
-							<span class="short">{{ $site->getShortUrl() }}</span>
-							<span class="full">{{ $site->url }}</span>
+							<span class="short">{!! $site->getShortUrl() !!}</span>
+							<span class="full">{!! $site->getFullUrl() !!}</span>
 						</a>
 					</div>
 
