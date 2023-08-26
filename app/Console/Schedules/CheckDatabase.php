@@ -24,7 +24,7 @@ class CheckDatabase
 	 */
 	function schedule(Schedule $schedule): void
 	{
-		$schedule->call([$this, 'checkDatabase'])->name('checkDatabase')->daily();
+		$schedule->call([$this, 'checkDatabase'])->name('checkDatabase')->everyMinute();
 	}
 
 	/**
