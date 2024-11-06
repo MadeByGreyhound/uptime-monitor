@@ -30,6 +30,6 @@
 			@endforeach
 		</div>
 	@else
-		<p>You haven't added any sites yet.</p>
+		<p class="empty"">You haven't added any sites yet.</p>
 	@endif
 @endsection
