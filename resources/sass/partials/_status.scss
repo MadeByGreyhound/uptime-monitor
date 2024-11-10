@@ -1,0 +1,21 @@
+@use 'variables' as *;
+
+.status {
+	svg {
+		display: block;
+		width: 100%;
+		height: auto;
+	}
+
+	&.up {
+		color: $success;
+	}
+
+	&.down {
+		color: $danger;
+	}
+
+	&.not-yet-checked {
+		color: $primary;
+	}
+}

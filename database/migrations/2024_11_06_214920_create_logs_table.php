@@ -18,6 +18,8 @@ return new class extends Migration
             $table->id();
 			$table->foreignIdFor(Monitor::class);
 			$table->tinytext('event');
+			$table->mediumInteger('code')->nullable();
+			$table->text('reason')->nullable();
 			$table->timestamp('date')->useCurrent();
         });
     }

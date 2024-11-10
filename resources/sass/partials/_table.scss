@@ -1,0 +1,19 @@
+.table {
+	margin-bottom: 40px;
+
+	article {
+		display: grid;
+		gap: 10px;
+		align-items: center;
+		border-bottom: 1px solid #ededef;
+		padding: 8px 10px;
+
+		&:first-child {
+			border-top: 1px solid #ededef;
+		}
+
+		&:nth-child(odd) {
+			background: #f9fafb;
+		}
+	}
+}

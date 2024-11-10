@@ -21,8 +21,10 @@
 			<div class="container">
 				<h1 class="site-title">{{ $title }}</h1>
 
-				@if( !request()->routeIs('createSite') )
-					<a href="{{ route('createSite') }}" class="button primary"><x-icon icon="add" />Add site</a>
+				@hasSection('cta')
+					<div class="ctas">
+						@yield('cta')
+					</div>
 				@endif
 			</div>
 		</header>

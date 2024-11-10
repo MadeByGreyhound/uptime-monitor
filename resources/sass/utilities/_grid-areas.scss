@@ -1,0 +1,7 @@
+@mixin grid-areas($areas) {
+	@each $selector, $value in $areas {
+		#{$selector} {
+			grid-area: $value;
+		}
+	}
+}

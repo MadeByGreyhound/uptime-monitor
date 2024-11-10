@@ -1,0 +1,49 @@
+@use '@greyhoundstudio/bp' as *;
+@use 'table';
+@use 'status';
+@use '../utilities/grid-areas' as *;
+
+.log-list {
+	.log {
+		@include grid-areas((
+			".date": date,
+			".monitor-url": monitor-url,
+			".event": event,
+		));
+
+		.event {
+			.status {
+				width: 20px;
+				height: 20px;
+				display: inline-block;
+				vertical-align: -4.5px;
+				margin-right: 5px;
+			}
+		}
+	}
+
+	&--url {
+		.log {
+			grid-template-areas: "date"
+						         "monitor-url"
+							     "event";
+
+			@include bp(md) {
+				grid-template-columns: 250px minmax(0, 1fr) minmax(0, 2fr);
+				grid-template-areas: "date monitor-url event";
+			}
+		}
+	}
+
+	&--no-url {
+		.log {
+			grid-template-areas: "date"
+							     "event";
+
+			@include bp(md) {
+				grid-template-columns: 250px minmax(0, 1fr);
+				grid-template-areas: "date event";
+			}
+		}
+	}
+}

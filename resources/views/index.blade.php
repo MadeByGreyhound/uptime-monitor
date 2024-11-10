@@ -1,11 +1,16 @@
 @extends('layouts.app')
 
+@section('cta')
+	<a href="{{ route('createSite') }}" class="button primary"><x-icon icon="add" />Add site</a>
+	<a href="{{ route('viewLogs') }}" class="button secondary"><x-icon icon="log" />View all logs</a>
+@endsection
+
 @section('content')
 	@if($sites->isNotEmpty())
-		<div class="site-list">
+		<div class="site-list table">
 			@foreach($sites as $site)
 				<article class="site">
-					<div class="site-status {{ $site->getUptimeStatusId() }}" aria-label="{{ $site->uptime_status }}">
+					<div class="status site-status {{ $site->getUptimeStatusId() }}" aria-label="{{ $site->uptime_status }}">
 						<x-icon :icon="$site->getUptimeStatusId()" />
 					</div>
 
@@ -17,6 +22,7 @@
 					</div>
 
 					<div class="site-actions">
+						<a href="{{ route('viewSiteLogs', $site) }}" class="button"><x-icon icon="log" />View logs</a>
 						<a href="{{ route('editSite', $site->id) }}" class="button"><x-icon icon="edit" />Edit</a>
 
 						<form method="POST" action="{{ route('destroySite', $site->id) }}">

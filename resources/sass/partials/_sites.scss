@@ -1,0 +1,60 @@
+@use '@greyhoundstudio/bp' as *;
+@use 'variables' as *;
+@use 'table';
+@use 'status';
+@use '../utilities/grid-areas' as *;
+
+.site-list {
+	.site {
+		grid-template-columns: 25px minmax(0, 1fr);
+		grid-template-areas: "status url"
+						     "actions actions";
+
+		@include grid-areas((
+			".site-url": url,
+			".site-actions": actions,
+			".site-status": status,
+		));
+
+		.site-url {
+			margin-top: -1px;
+
+			a {
+				display: block;
+				overflow-wrap: break-word;
+				text-decoration: none;
+			}
+
+			.full {
+				display: none;
+			}
+		}
+
+		.site-actions {
+			display: flex;
+			justify-content: flex-end;
+			gap: 5px;
+
+			form {
+				display: inline;
+			}
+		}
+
+		@include bp(md) {
+			.site-url {
+				.short {
+					display: none;
+				}
+
+				.full {
+					display: block;
+				}
+			}
+		}
+
+		@include bp(md) {
+			grid-template-columns: 25px 1fr auto;
+			grid-template-areas: "status url actions";
+		}
+	}
+}

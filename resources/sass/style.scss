@@ -1,7 +1,8 @@
 @use 'modern-normalize';
-@use 'partials/_global';
-@use 'partials/_forms';
-@use 'partials/_buttons';
-@use 'partials/_notification';
-@use 'partials/_header';
-@use 'partials/_body';
+@use 'partials/global';
+@use 'partials/forms';
+@use 'partials/buttons';
+@use 'partials/notification';
+@use 'partials/header';
+@use 'partials/sites';
+@use 'partials/logs';

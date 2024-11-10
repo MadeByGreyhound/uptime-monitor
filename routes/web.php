@@ -32,3 +32,7 @@ Route::post('/site/{site}/toggle', 'SiteController@toggle')->name('toggleSite');
 
 // Force uptime check
 Route::post('/check', 'SiteController@refresh')->name('refresh');
+
+// Logs
+Route::get('/logs', 'LogController@index')->name('viewLogs');
+Route::get('/logs/{site}', 'LogController@site')->name('viewSiteLogs');
