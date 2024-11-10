@@ -19,7 +19,7 @@
 
 					@if($showUrl)
 						<div class="monitor-url">
-							<a href="{{ route('viewSiteLogs', ['site' => $log->monitor]) }}">{{ $log->monitor->url }}</a>
+							<a href="{{ route('viewSiteLogs', ['site' => $log->monitor]) }}">{!! $log->monitor->getShortUrl() !!}</a>
 						</div>
 					@endif
 

@@ -19,7 +19,7 @@
 	<body>
 		<header class="site-header">
 			<div class="container">
-				<h1 class="site-title">{{ $title }}</h1>
+				<h1 class="site-title">{!! $title !!}</h1>
 
 				@hasSection('cta')
 					<div class="ctas">

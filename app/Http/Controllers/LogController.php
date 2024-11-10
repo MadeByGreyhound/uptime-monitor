@@ -34,7 +34,7 @@ class LogController extends Controller
 
 		return view('logs', [
 			'logs' => Log::where('monitor_id', $monitor->id)->orderBy('date', 'desc')->get(),
-			'title' => sprintf( 'Logged Events for %s', $monitor->url ),
+			'title' => sprintf( 'Logged Events for %s', $monitor->getShortUrl() ),
 			'showUrl' => false,
 		]);
 	}

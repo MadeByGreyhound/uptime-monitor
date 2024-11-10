@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\View\View;
-use Spatie\UptimeMonitor\Models\Monitor;
+use App\Models\Monitor;
 use Spatie\UptimeMonitor\MonitorRepository;
 
 /**
