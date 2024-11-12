@@ -16,7 +16,7 @@ return new class extends Migration
 	{
         Schema::create('logs', function (Blueprint $table) {
             $table->id();
-			$table->foreignIdFor(Monitor::class);
+			$table->foreignIdFor(Monitor::class)->constrained()->cascadeOnDelete();
 			$table->tinytext('event');
 			$table->mediumInteger('code')->nullable();
 			$table->text('reason')->nullable();
