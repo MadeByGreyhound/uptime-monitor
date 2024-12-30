@@ -2,6 +2,7 @@
 
 namespace App\Notifications\Notifications;
 
+use App\Models\Monitor;
 use App\Notifications\Notifiable;
 use NotificationChannels\Pushover\PushoverMessage;
 use Spatie\UptimeMonitor\Notifications\Notifications\UptimeCheckFailed as UptimeCheckFailedSource;
@@ -9,7 +10,8 @@ use Spatie\UptimeMonitor\Notifications\Notifications\UptimeCheckFailed as Uptime
 /**
  * Notification sent out when a site is discovered to be down.
  */
-class UptimeCheckFailed extends UptimeCheckFailedSource {
+class UptimeCheckFailed extends UptimeCheckFailedSource
+{
 
 	/**
 	 * Get the Pushover representation of the notification.
@@ -19,10 +21,15 @@ class UptimeCheckFailed extends UptimeCheckFailedSource {
 	 */
 	public function toPushover(Notifiable $notifiable): PushoverMessage
 	{
-		return PushoverMessage::create($this->getMonitor()->uptime_check_failure_reason)
-		                      ->title($this->getMessageText())
-		                      ->highPriority()
-		                      ->url(route('viewSites'), 'Visit Uptime Monitor');
+		$monitor = $this->getMonitor();
+		$code_or_reason = $monitor->uptime_check_failure_reason;
+
+		ray($monitor->uptime_status);
+
+		return PushoverMessage::create(Monitor::getMessage($monitor->uptime_status, $code_or_reason, $code_or_reason))
+			->title($this->getMessageText())
+			->highPriority()
+			->url(route('viewSites'), 'Visit Uptime Monitor');
 	}
 
 }

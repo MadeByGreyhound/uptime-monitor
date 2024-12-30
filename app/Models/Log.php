@@ -5,11 +5,10 @@ namespace App\Models;
 use App\Helpers\StatusCode;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Spatie\UptimeMonitor\Models\Enums\UptimeStatus;
 
 class Log extends Model
 {
-    use HasFactory;
+	use HasFactory;
 
 	/**
 	 * @var bool Disable default timestamps.
@@ -38,19 +37,8 @@ class Log extends Model
 	 *
 	 * @return string|null
 	 */
-	public function getMessage() {
-		if( $this->event === UptimeStatus::UP) {
-			return 'Site has recovered';
-		} elseif( $this->event === UptimeStatus::DOWN ) {
-			if ($message = StatusCode::getStatusCodeWithMessage($this->code)) {
-				return $message;
-			} elseif ($this->reason) {
-				return $this->reason;
-			} else {
-				return 'Site did not respond.';
-			}
-		}
-
-		return null;
+	public function getMessage()
+	{
+		return Monitor::getMessage($this->event, StatusCode::validate($this->code), $this->reason);
 	}
 }

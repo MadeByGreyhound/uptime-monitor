@@ -78,7 +78,7 @@ class Monitor extends \Spatie\UptimeMonitor\Models\Monitor
 		$parts = parse_url($this->url);
 
 		if ($parts) {
-			return str_replace('.', '.<wbr>', join('', array_filter([$parts['host'] ?? null, $parts['path'] ?? null, isset( $parts['query'] ) ? '?' . $parts['query'] : null])));
+			return str_replace('.', '.<wbr>', join('', array_filter([$parts['host'] ?? null, $parts['path'] ?? null, isset($parts['query']) ? '?' . $parts['query'] : null])));
 		}
 
 		return null;
@@ -102,5 +102,30 @@ class Monitor extends \Spatie\UptimeMonitor\Models\Monitor
 	public function getUptimeStatusId(): string
 	{
 		return str_replace(' ', '-', $this->uptime_status);
+	}
+
+	/**
+	 * Get status message.
+	 *
+	 * @param string $status
+	 * @param int|null $code
+	 * @param string|null $reason
+	 * @return string|null
+	 */
+	public static function getMessage(string $status, ?int $code, ?string $reason): ?string
+	{
+		if ($status === UptimeStatus::UP) {
+			return 'Site has recovered';
+		} elseif ($status === UptimeStatus::DOWN) {
+			if ($message = StatusCode::getStatusCodeWithMessage($code)) {
+				return $message;
+			} elseif ($reason) {
+				return $reason;
+			} else {
+				return 'Site did not respond.';
+			}
+		}
+
+		return null;
 	}
 }
