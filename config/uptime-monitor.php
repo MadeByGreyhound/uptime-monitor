@@ -55,7 +55,7 @@ return [
          *
          * You can use any implementation of Spatie\UptimeMonitor\Helpers\UptimeResponseCheckers\UptimeResponseChecker here.
          */
-        'response_checker' => Spatie\UptimeMonitor\Helpers\UptimeResponseCheckers\LookForStringChecker::class,
+        'response_checker' => App\UptimeResponseCheckers\CheckStatusCode::class,
 
         /*
          * An uptime check will be performed if the last check was performed more than the
@@ -92,7 +92,8 @@ return [
          * passing custom options that will be used when making requests.
          */
         'guzzle_options' => [
-            // 'allow_redirects' => false,
+        	'allow_redirects' => false,
+			'http_errors' => false, // Let the CheckStatusCode class do all the checking
         ],
 
         /*

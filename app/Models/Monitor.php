@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Spatie\UptimeMonitor\Models\Enums\UptimeStatus;
 use Spatie\UptimeMonitor\Models\Traits\SupportsUptimeCheck;
+use App\Helpers\StatusCode;
 
 class Monitor extends \Spatie\UptimeMonitor\Models\Monitor
 {
@@ -25,29 +26,17 @@ class Monitor extends \Spatie\UptimeMonitor\Models\Monitor
 		$log = new Log();
 		$log->monitor()->associate($this);
 		$log->event = UptimeStatus::DOWN;
-		$log->reason = $reason;
-		$log->code = $this->getStatusCodeFromReason($reason);
+
+		if ($status_code = StatusCode::validate($reason)) {
+			$log->code = $status_code;
+		} else {
+			$log->reason = $reason;
+		}
+
 		$log->save();
 
 		// Run parent function to send notifications if needed
 		$this->parentUptimeCheckFailed($reason);
-	}
-
-	/**
-	 * Extract status code from failure message.
-	 *
-	 * @param string $reason
-	 * @return int|null
-	 */
-	private function getStatusCodeFromReason(string $reason): ?int
-	{
-		preg_match('/resulted in a `(\d{3}) .*` response/', $reason, $matches);
-
-		if (isset($matches[1])) {
-			return (int)$matches[1];
-		}
-
-		return null;
 	}
 
 	/**
