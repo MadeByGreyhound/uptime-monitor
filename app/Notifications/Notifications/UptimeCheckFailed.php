@@ -24,8 +24,6 @@ class UptimeCheckFailed extends UptimeCheckFailedSource
 		$monitor = $this->getMonitor();
 		$code_or_reason = $monitor->uptime_check_failure_reason;
 
-		ray($monitor->uptime_status);
-
 		return PushoverMessage::create(Monitor::getMessage($monitor->uptime_status, $code_or_reason, $code_or_reason))
 			->title($this->getMessageText())
 			->highPriority()
