@@ -33,6 +33,8 @@
 				</article>
 			@endforeach
 		</div>
+
+		{{ $logs->links() }}
 	@else
 		<p class="empty">No events have been logged yet.</p>
 	@endif

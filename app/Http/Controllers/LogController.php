@@ -17,7 +17,7 @@ class LogController extends Controller
 	public function index()
 	{
 		return view('logs', [
-			'logs' => Log::orderBy('date', 'desc')->get(),
+			'logs' => Log::orderBy('date', 'desc')->paginate(50),
 			'title' => 'All Logged Events',
 			'showUrl' => true,
 		]);
@@ -33,7 +33,7 @@ class LogController extends Controller
 		$monitor = Monitor::findOrFail($monitor_id);
 
 		return view('logs', [
-			'logs' => Log::where('monitor_id', $monitor->id)->orderBy('date', 'desc')->get(),
+			'logs' => Log::where('monitor_id', $monitor->id)->orderBy('date', 'desc')->paginate(50),
 			'title' => sprintf( 'Logged Events for %s', $monitor->getShortUrl() ),
 			'showUrl' => false,
 		]);
