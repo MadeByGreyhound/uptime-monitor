@@ -73,15 +73,20 @@ class Monitor extends \Spatie\UptimeMonitor\Models\Monitor
 	 *
 	 * @return string|null
 	 */
-	public function getShortUrl(): ?string
+	public function getShortUrl( bool $html = true ): ?string
 	{
+		$url = null;
 		$parts = parse_url($this->url);
 
 		if ($parts) {
-			return str_replace('.', '.<wbr>', join('', array_filter([$parts['host'] ?? null, $parts['path'] ?? null, isset($parts['query']) ? '?' . $parts['query'] : null])));
+			$url = str_replace('.', '.<wbr>', join('', array_filter([$parts['host'] ?? null, $parts['path'] ?? null, isset($parts['query']) ? '?' . $parts['query'] : null])));
+
+			if( !$html ) {
+				$url = strip_tags( $url );
+			}
 		}
 
-		return null;
+		return $url;
 	}
 
 	/**
