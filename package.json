@@ -2,10 +2,8 @@
 	"name": "uptime-monitor",
 	"description": "Wrapper for Spatie's Laravel Uptime Monitor.",
 	"scripts": {
-		"watch": "npx mix watch",
-		"dev": "npx mix",
-		"prod": "npx mix --production",
-		"build": "npx mix --production"
+		"build": "vite build",
+		"dev": "vite"
 	},
 	"repository": {
 		"type": "git",
@@ -18,12 +16,13 @@
 	},
 	"homepage": "https://github.com/MadeByGreyhound/uptime-monitor#readme",
 	"devDependencies": {
-		"laravel-mix": "^6.0.49",
-		"sass": "^1.62.1",
-		"sass-loader": "^13.2.2"
+		"laravel-vite-plugin": "^3.2.0",
+		"sass-embedded": "^1.107.0",
+		"vite": "^8.3.5"
 	},
 	"dependencies": {
 		"@greyhoundstudio/bp": "^1.0.0",
 		"modern-normalize": "^2.0.0"
-	}
+	},
+	"private": true
 }
