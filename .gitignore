@@ -10,8 +10,7 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
-/public/assets
-/public/mix-manifest.json
+/public/build
 .idea/
 /.envrc
 /sql/*

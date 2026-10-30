@@ -15,7 +15,7 @@ Once that is done, issue the following commands in the project directory:
 ```
 composer install --optimize-autoloader --no-dev
 npm install
-npm run prod
+npm run build
 touch database/database.sqlite
 php artisan migrate
 php artisan config:cache
