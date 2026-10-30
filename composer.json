@@ -1,5 +1,6 @@
 {
-    "name": "tomslominski/uptime-monitor",
+    "$schema": "https://getcomposer.org/schema.json",
+    "name": "madebygreyhound/uptime-monitor",
     "type": "project",
     "description": "Wrapper for Spatie's Laravel Uptime Monitor.",
     "keywords": [
@@ -7,26 +8,30 @@
     ],
     "license": "ISC",
     "require": {
-        "php": "^8.0.2",
-        "guzzlehttp/guzzle": "^7.4",
+        "php": "^8.5",
+        "guzzlehttp/guzzle": "^7.9",
         "javoscript/laravel-macroable-models": "^1.0",
-        "laravel-notification-channels/pushover": "^3.1.0",
-        "laravel/framework": "^9.0",
-        "laravel/tinker": "^2.0",
-        "spatie/laravel-uptime-monitor": "^4.2.1",
-        "symfony/http-client": "^6.0",
-        "symfony/mailgun-mailer": "^6.0"
+        "laravel-notification-channels/pushover": "^5.0",
+        "laravel/framework": "^13.39",
+        "laravel/tinker": "^3.0",
+        "spatie/laravel-uptime-monitor": "^4.7.1",
+        "symfony/http-client": "^7.4 || ^8.0",
+        "symfony/mailgun-mailer": "^7.4 || ^8.0"
     },
     "require-dev": {
-        "nunomaduro/collision": "^6.1",
-        "spatie/laravel-ignition": "^1.0",
-        "spatie/laravel-ray": "^1.29",
+        "fakerphp/faker": "^1.23",
+        "nunomaduro/collision": "^8.6",
+        "spatie/laravel-ignition": "^2.12",
+        "spatie/laravel-ray": "^1.43",
         "spatie/ray": "^1.37"
     },
     "config": {
         "optimize-autoloader": true,
         "preferred-install": "dist",
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "php-http/discovery": true
+        }
     },
     "extra": {
         "laravel": {
@@ -35,12 +40,10 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "app/"
-        },
-        "classmap": [
-            "database/seeds",
-            "database/factories"
-        ]
+            "App\\": "app/",
+            "Database\\Factories\\": "database/factories/",
+            "Database\\Seeders\\": "database/seeders/"
+        }
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
@@ -49,11 +52,17 @@
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover --ansi"
         ],
+        "post-update-cmd": [
+            "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
+        ],
         "post-root-package-install": [
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
         ],
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
+        ],
+        "pre-package-uninstall": [
+            "Illuminate\\Foundation\\ComposerScripts::prePackageUninstall"
         ]
     }
 }

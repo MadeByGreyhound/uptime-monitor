@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Spatie\UptimeMonitor\Models\Enums\UptimeStatus;
 use Spatie\UptimeMonitor\Models\Traits\SupportsUptimeCheck;
@@ -56,6 +57,16 @@ class Monitor extends \Spatie\UptimeMonitor\Models\Monitor
 
 		// Run parent function to send notifications if needed
 		$this->parentUptimeCheckSucceeded();
+	}
+
+	/**
+	 * Always store the HTTP method in uppercase, as Guzzle preserves its casing.
+	 *
+	 * @return Attribute
+	 */
+	protected function uptimeCheckMethod(): Attribute
+	{
+		return Attribute::set(fn (?string $value) => $value ? strtoupper($value) : $value);
 	}
 
 	/**

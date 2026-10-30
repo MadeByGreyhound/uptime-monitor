@@ -1,38 +1,29 @@
 <?php
 
+use App\Http\Controllers\LogController;
+use App\Http\Controllers\SiteController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 // Show sites
-Route::get('/', 'SiteController@index')->name('viewSites');
+Route::get('/', [SiteController::class, 'index'])->name('viewSites');
 
 // Add site
-Route::get('/site/add', 'SiteController@create')->name('createSite');
-Route::post('/', 'SiteController@store')->name('storeSite');
+Route::get('/site/add', [SiteController::class, 'create'])->name('createSite');
+Route::post('/', [SiteController::class, 'store'])->name('storeSite');
 
 // Edit site
-Route::get('/site/{site}/edit', 'SiteController@edit')->name('editSite');
-Route::post('/site/{site}', 'SiteController@update')->name('updateSite');
+Route::get('/site/{site}/edit', [SiteController::class, 'edit'])->name('editSite');
+Route::post('/site/{site}', [SiteController::class, 'update'])->name('updateSite');
 
 // Delete site
-Route::delete('/site/{site}/delete', 'SiteController@destroy')->name('destroySite');
+Route::delete('/site/{site}/delete', [SiteController::class, 'destroy'])->name('destroySite');
 
 // Disable site
-Route::post('/site/{site}/toggle', 'SiteController@toggle')->name('toggleSite');
+Route::post('/site/{site}/toggle', [SiteController::class, 'toggle'])->name('toggleSite');
 
 // Force uptime check
-Route::post('/check', 'SiteController@refresh')->name('refresh');
+Route::post('/check', [SiteController::class, 'refresh'])->name('refresh');
 
 // Logs
-Route::get('/logs', 'LogController@index')->name('viewLogs');
-Route::get('/logs/{site}', 'LogController@site')->name('viewSiteLogs');
+Route::get('/logs', [LogController::class, 'index'])->name('viewLogs');
+Route::get('/logs/{site}', [LogController::class, 'site'])->name('viewSiteLogs');

@@ -6,6 +6,8 @@ Frontend for Spatie's Laravel Uptime Monitor.
 
 ## Deployment
 
+The server must be running PHP 8.5 or newer.
+
 To deploy this site to a server, first clone this repo to a directory on the server. Then, rename the `.env.example` file to `.env` and fill out the necessary variables.
 
 Once that is done, issue the following commands in the project directory:

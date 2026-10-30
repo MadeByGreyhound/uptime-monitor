@@ -94,7 +94,7 @@ class SiteController extends Controller
 	 * @param Monitor|null $site Specified site, null if creating a new site.
 	 * @return Redirector Redirect back to home page.
 	 */
-    public function storeOrUpdate(Request $request, Monitor $site = null)
+    public function storeOrUpdate(Request $request, ?Monitor $site = null)
 	{
 		$validator = Validator::make($request->all(), [
 			'url' => 'required|unique:monitors|max:1000|url',

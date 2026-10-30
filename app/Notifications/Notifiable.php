@@ -13,7 +13,7 @@ class Notifiable extends NotifiableSource
     public function routeNotificationForPushover(): ?PushoverReceiver
     {
 		$user_token = config('services.pushover.user_token');
-		$app_token = config('services.pushover.app_token');
+		$app_token = config('services.pushover.token');
 
 	    return $user_token && $app_token ? PushoverReceiver::withUserKey($user_token)
 	                           ->withApplicationToken($app_token) : null;

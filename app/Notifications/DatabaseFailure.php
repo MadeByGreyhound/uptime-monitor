@@ -37,7 +37,7 @@ class DatabaseFailure extends Notification
 	 */
 	public function via(mixed $notifiable): array
 	{
-		return ['mail', PushoverChannel::class];
+		return [PushoverChannel::class];
 	}
 
 	/**

@@ -13,3 +13,5 @@ yarn-error.log
 /public/assets
 /public/mix-manifest.json
 .idea/
+/.envrc
+/sql/*

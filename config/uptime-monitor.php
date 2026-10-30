@@ -11,8 +11,8 @@ return [
     'notifications' => [
 
         'notifications' => [
-            \App\Notifications\Notifications\UptimeCheckFailed::class => [PushoverChannel::class, 'mail'],
-            \App\Notifications\Notifications\UptimeCheckRecovered::class => [PushoverChannel::class, 'mail'],
+            \App\Notifications\Notifications\UptimeCheckFailed::class => [PushoverChannel::class],
+            \App\Notifications\Notifications\UptimeCheckRecovered::class => [PushoverChannel::class],
         ],
 
         /*
